@@ -1,7 +1,7 @@
 package com.recap.domain.post.entity;
 
+import com.recap.domain.user.entity.User;
 import com.recap.global.entity.BaseEntity;
-import com.recap.global.entity.User;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -34,15 +34,19 @@ public class Post extends BaseEntity {
     private LocalDateTime modifiedDt;
 
     @Column(name = "is_deleted", nullable = false)
-    private boolean isDeleted = false;
+    private boolean isDeleted;
 
-    private Integer like;
+    @Column(name = "like_num")
+    private Integer likeNum;
 
     private Integer scrap;
 
     @PrePersist
     public void preCreate() {
         this.createdDt = LocalDateTime.now();
+        this.likeNum = 0;
+        this.scrap = 0;
+        this.isDeleted = false;
     }
 
     @PreUpdate
