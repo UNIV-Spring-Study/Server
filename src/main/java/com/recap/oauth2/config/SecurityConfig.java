@@ -56,6 +56,7 @@ public class SecurityConfig {
         return configuration.getAuthenticationManager();
     }
 
+    // TODO : 이게 없으면 비밀번호 암호화가 안될지 생각해보기
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
         return new BCryptPasswordEncoder();
@@ -68,7 +69,7 @@ public class SecurityConfig {
         return http.build();
     }
 
-    // TODO : COR
+    // TODO : CORS 설정하기 & 왜 해야하는지 생각해보기
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
