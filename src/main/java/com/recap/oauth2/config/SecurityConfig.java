@@ -1,18 +1,11 @@
 package com.recap.oauth2.config;
 
 import com.recap.domain.user.repository.UserRepository;
-//import com.recap.global.jwt.CookieUtil;
-//import com.recap.global.jwt.JwtFilter;
-//import com.recap.global.jwt.JwtUtil;
-//import com.recap.global.jwt.LoginFilter;
-//import com.recap.oauth2.handler.OAuth2AuthenticationSuccessHandler;
-//import com.recap.oauth2.service.CustomOAuth2UserService;
 
 import com.recap.global.jwt.CookieUtil;
 import com.recap.oauth2.HttpCookieOAuth2AuthorizationRequestRepository;
 import com.recap.oauth2.handler.OAuth2AuthenticationFailureHandler;
 
-import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
@@ -22,12 +15,9 @@ import org.springframework.security.config.annotation.authentication.configurati
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
-import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
@@ -40,17 +30,8 @@ import java.util.List;
 @Slf4j
 @EnableMethodSecurity(prePostEnabled = true)
 public class SecurityConfig {
-//    private final CustomOAuth2UserService customOAuth2UserService;
-//    private final OAuth2AuthenticationSuccessHandler oAuth2AuthenticationSuccessHandler;
-    private final OAuth2AuthenticationFailureHandler oAuth2AuthenticationFailureHandler;
-    private final HttpCookieOAuth2AuthorizationRequestRepository httpCookieOAuth2AuthorizationRequestRepository;
 
-    private final AuthenticationConfiguration authenticationConfiguration;
-    //private final JwtUtil jwtUtil;
-    private final UserDetailsService userDetailsService;
-    private final UserRepository userRepository;
-    private final CookieUtil cookieUtil;
-
+    // TODO: AuthenticationManager의 역할 & 꼭 있어야하는지 생각해보기
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration configuration) throws Exception {
         return configuration.getAuthenticationManager();
